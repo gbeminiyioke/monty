@@ -12,7 +12,7 @@ void m_pint(stack_t **head, unsigned int line_num)
 {
 	of (*head == NULL)
 	{
-		printf(stderr, "L%u: can't pint, stack empty\n", line_num);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_num);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);

@@ -17,7 +17,7 @@ void m_pall(stack_t **head, unsigned int line_num)
 		return;
 	while (loc)
 	{
-		printf("%d\n", loc->n);
+		fprintf("%d\n", loc->n);
 		loc = loc->next;
 	}
 }
