@@ -77,7 +77,7 @@ void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 void m_stack(stack_t **head, unsigned int line_num);
 void m_queue(stack_t **head, unsigned int line_num);
-int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
+int execute(char *content, stack_t **head, unsigned int line_num, FILE *file);
 char *_realloc(char *ptr, unsigned int o_size, unsigned int n_size);
 char *clear_line(char *content);
 ssize_t getstdin(char **lineptr, int file);
