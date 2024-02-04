@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * m_noo - this opcode implements nop
+ * m_nop - this opcode implements nop
  * @head: this is the head of the stack
  * @line_num: the line number
  * Return: nothing.

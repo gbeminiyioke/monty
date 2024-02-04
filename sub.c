@@ -8,7 +8,7 @@
  * Return: nothing.
  */
 
-void m_add(stack_t **head, unsigned int line_num)
+void m_sub(stack_t **head, unsigned int line_num)
 {
 	int i;
 	int j;
@@ -18,15 +18,15 @@ void m_add(stack_t **head, unsigned int line_num)
 	for (j = 0; loc != NULL; j++)
 		loc = loc->next;
 	if (j < 2)
-        {
+	{
 		fprint(stderr, "L%d: can't sub, stack too short\n", line_num);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-        loc = *head;
-        i = loc->next->n - loc->n;
+	loc = *head;
+	i = loc->next->n - loc->n;
 	loc->next->n = i;
 	*head = loc->next;
 	free(loc);

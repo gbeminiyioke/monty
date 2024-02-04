@@ -39,7 +39,7 @@ void m_div(stack_t **head, unsigned int line_num)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	j = loc->next-n / loc->n;
+	j = loc->next->n / loc->n;
 	loc->next->n = j;
 	*head = loc->next;
 	free(loc);

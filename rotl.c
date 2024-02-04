@@ -12,7 +12,7 @@ void m_rotl(stack_t **head, __attribute__((unused)) unsigned int line_num)
 	stack_t *nxt;
 	stack_t *loc = *head;
 
-	if(*head == NULL || (*head)->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}

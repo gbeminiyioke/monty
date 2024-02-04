@@ -19,7 +19,7 @@ void m_rotr(stack_t **head, __attribute__((used)) unsigned int line_num)
 	}
 	while (cpd->next)
 	{
-		cpd = cpd-next;
+		cpd = cpd->next;
 	}
 	cpd->next = *head;
 	cpd->prev->next = NULL;

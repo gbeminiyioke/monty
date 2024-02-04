@@ -4,6 +4,7 @@
  * m_mul - this opcode multiplies the second top
  * element of the stack by the top element
  * @head: the head of the stack
+ * @line_num: the line number
  * Return: nothin
  */
 
@@ -17,7 +18,7 @@ void m_mul(stack_t **head, unsigned int line_num)
 	loc = *head;
 	while (loc)
 	{
-		loc = loc-next;
+		loc = loc->next;
 		i++;
 	}
 	if (i < 2)
