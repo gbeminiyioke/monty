@@ -19,11 +19,11 @@ void m_queue(stack_t **head, unsigned int line_num)
  * addqueue - this function adds a node to the tail
  * of the stack
  * @head: this is the head of the stack
- * @nwval: the new value to add
+ * @n: the new value to add
  * Return: nothing
  */
 
-void addqueue(stack_t **head, int nwval)
+void addqueue(stack_t **head, int n)
 {
 	stack_t *loc;
 	stack_t *n_node;
@@ -34,7 +34,7 @@ void addqueue(stack_t **head, int nwval)
 	{
 		printf("Error\n");
 	}
-	n_node->n = nwval;
+	n_node->n = n;
 	n_node->next = NULL;
 	if (loc)
 	{
