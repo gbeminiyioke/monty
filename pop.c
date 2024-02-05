@@ -20,7 +20,7 @@ void m_pop(stack_t **head, unsigned int line_num)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	*head = h->next;
-	free(h);
+	loc = *head;
+	*head = loc->next;
+	free(loc);
 }

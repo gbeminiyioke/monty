@@ -33,7 +33,7 @@ void m_div(stack_t **head, unsigned int line_num)
 	loc = *head;
 	if (loc->n == 0)
 	{
-		fprintf(stderr, "L%: division by zero\n", line_num);
+		fprintf(stderr, "L%d: division by zero\n", line_num);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);

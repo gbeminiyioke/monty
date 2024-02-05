@@ -52,11 +52,11 @@ int execute(char *content, stack_t **stack, unsigned int line_num, FILE *file)
 	}
 	if (c && opst[i].opcode == NULL)
 	{
-		fprint(stderr, "L%d: unknown instruction %s\n", line_num, c);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, c);
 		fclose(file);
 		free(content);
 		free_stack(*stack);
-		exit(EXIT FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }

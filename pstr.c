@@ -20,8 +20,8 @@ void m_pstr(stack_t **head, unsigned int line_num)
 		{
 			break;
 		}
-		primtf("%c", loc->n);
+		fprintf("%c", loc->n);
 		loc = loc->next;
 	}
-	printf("\n");
+	fprintf("\n");
 }

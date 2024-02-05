@@ -23,7 +23,7 @@ void m_swap(stack_t **head, unsigned int line_num)
 	}
 	if (i < 2)
 	{
-		fprint(stderr, "L%d: can't swap, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
@@ -33,4 +33,4 @@ void m_swap(stack_t **head, unsigned int line_num)
 	j = loc->n;
 	loc->n = loc->next->n;
 	loc->next->n = j;
-i}
+}
