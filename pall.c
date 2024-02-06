@@ -1,23 +1,13 @@
 #include "monty.h"
 
 /**
- * m_pall - this function prints the stack
- * @head: this is the stack head
- * @line_num: the line number
+ * pall - this opcode prints the stack
+ * @stack: this is the head of the stack
+ * @line_num: this is the line number
  * Return: nothing
  */
 
-void m_pall(stack_t **head, unsigned int line_num)
+void pall(stack_t **stack, unsigned int line_num __attribute__((unused)))
 {
-	stack_t *loc;
-	(void)line_num;
-
-	loc = *head;
-	if (loc == NULL)
-		return;
-	while (loc)
-	{
-		fprintf("%d\n", loc->n);
-		loc = loc->next;
-	}
+	print_stack(*stack);
 }

@@ -1,21 +1,41 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
+#include <stdio.h>
 #include <ctype.h>
-#include <sys/types.h>
+#include <string.h>
+
+#define INSTRUCTIONS              \
+		{			\
+			{"push", push},   \
+			{"pall", pall},   \
+			{"pint", pint},   \
+			{"pop", pop},     \
+			{"swap", swap},   \
+			{"nop", nop},     \
+			{"div", _div},    \
+			{"mul", _mul},    \
+			{"add", _add},    \
+			{"sub", _sub},    \
+			{"mod", mod},     \
+			{"pchar", pchar}, \
+			{"pstr", pstr},   \
+			{"rotl", rotl},   \
+			{"rotr", rotr},   \
+			{                     \
+				NULL, NULL      \
+			}                     \
+		}
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ *  @n: integer
+ *  @prev: points to the previous element of the stack (or queue)
+ *  @next: points to the next element of the stack (or queue)
+ *  Description: doubly linked list node structure
+ *  for stack, queues, LIFO, FIFO
  */
 
 typedef struct stack_s
@@ -29,7 +49,6 @@ typedef struct stack_s
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
- *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
@@ -41,47 +60,40 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct bus_s - variables -arg, line content, file
- * @arg: value
- * @file: pointer to the monty file
- * @content: the content of the line
- * @lifi: flag change stack queue
- *
- * Description: it carries value through the program
+ * struct help - argument for the current opcode
+ * @data_struct: stack mode, stack (default) and queue
+ * @argument: the arguments of the string
+ * Description: global structure used to pass data around the functions easily
  */
 
-typedef struct bus_s
+typedef struct help
 {
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-} bus_t;
-extern bus_t bus;
+	int data_struct;
+	char *argument;
+} help;
+help global;
 
-void m_push(stack_t **head, unsigned int number);
-void m_pall(stack_t **head, unsigned int number);
-void m_pint(stack_t **head, unsigned int number);
-void m_pop(stack_t **head, unsigned int line_num);
-void free_stack(stack_t *head);
-void m_swap(stack_t **head, unsigned int line_num);
-void m_add(stack_t **head, unsigned int line_num);
-void m_sub(stack_t **head, unsigned int line_num);
-void m_div(stack_t **head, unsigned int line_num);
-void m_mul(stack_t **head, unsigned int line_num);
-void m_mod(stack_t **head, unsigned int line_num);
-void m_nop(stack_t **head, unsigned int line_num);
-void m_pchar(stack_t **head, unsigned int line_num);
-void m_pstr(stack_t **head, unsigned int line_num);
-void m_rotl(stack_t **head, unsigned int line_num);
-void m_rotr(stack_t **head, __attribute__((unused)) unsigned int line_num);
-void addnode(stack_t **head, int n);
-void addqueue(stack_t **head, int n);
-void m_stack(stack_t **head, unsigned int line_num);
-void m_queue(stack_t **head, unsigned int line_num);
-int execute(char *content, stack_t **head, unsigned int line_num, FILE *file);
-char *_realloc(char *ptr, unsigned int o_size, unsigned int n_size);
-char *clear_line(char *content);
-ssize_t getstdin(char **lineptr, int file);
+void opcode(stack_t **stack, char *str, unsigned int line_num);
+int isnumber(char *str);
+int is_digit(char *string);
+void rotl(stack_t **stack, unsigned int line_num);
+void rotr(stack_t **stack, unsigned int line_num);
+void pchar(stack_t **stack, unsigned int line_num);
+void pstr(stack_t **stack, unsigned int line_num);
+void _add(stack_t **stack, unsigned int line_num);
+void _sub(stack_t **stack, unsigned int line_num);
+void _mul(stack_t **stack, unsigned int line_num);
+void mod(stack_t **stack, unsigned int line_num);
+void _div(stack_t **stack, unsigned int line_num);
+void pint(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void push(stack_t **stack, unsigned int line_num);
+void pall(stack_t **stack, unsigned int line_num);
+void pop(stack_t **stack, unsigned int line_num);
+void nop(stack_t **stack, unsigned int line_num);
+stack_t *queue_node(stack_t **stack, const int n);
+stack_t *add_node(stack_t **stack, const int n);
+void free_stack(stack_t *stack);
+size_t print_stack(const stack_t *stack);
 
 #endif
