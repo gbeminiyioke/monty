@@ -11,7 +11,7 @@
 
 stack_t *queue_node(stack_t **stack, const int n)
 {
-	stach_t *loc = *stack;
+	stack_t *loc = *stack;
 	stack_t *nxt = malloc(sizeof(stack_t));
 
 	if (!nxt)
@@ -102,7 +102,7 @@ void free_stack(stack_t *stack)
 
 	if (stack)
 	{
-		nee = stack->next;
+		new = stack->next;
 		while (loc)
 		{
 			free(loc);

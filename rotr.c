@@ -12,7 +12,7 @@ void rotr(stack_t **stack, unsigned int line_num)
 	stack_t *bfr;
 	stack_t *cpd;
 
-	(void) line_count;
+	(void) line_num;
 	if (!stack || !*stack || !(*stack)->next)
 		return;
 	cpd = *stack;

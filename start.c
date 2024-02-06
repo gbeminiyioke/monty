@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 	char *str = NULL;
-	stact_t *head = NULL;
+	stack_t *stack = NULL;
 	unsigned int ln;
 	size_t bufr;
 	char *buff = NULL;
@@ -45,11 +45,11 @@ int main(int argc, char **argv)
 			continue;
 		}
 		global.argument = strtok(NULL, " \t\n");
-		opcode(&head, str, ln);
+		opcode(&stack, str, ln);
 		ln++;
 	}
 	free(buff);
-	free_stack(head);
+	free_stack(stack);
 	fclose(file);
 	exit(EXIT_SUCCESS);
 }
